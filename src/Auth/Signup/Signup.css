@@ -1,0 +1,66 @@
+.main-box-Signup {
+    position: relative;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: sandybrown;
+}
+
+.Signup-title-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Signup-title {
+    position: relative;
+}
+
+.Signup-main-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 50vh;
+    margin-top: 10vh;
+}
+
+.Signup-flex-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 75vw;
+}
+
+.Signup-label {
+    margin: 0;
+}
+
+.Signup-email-input {
+    height: 10%;
+    border: none;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.Signup-password-input {
+    height: 10%;
+    border: none;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.Signup-box-label-confirm {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    user-select: none;
+}
+
+.Signup-name-input {
+    height: 10%;
+    border: none;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: bold;
+}

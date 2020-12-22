@@ -1,0 +1,58 @@
+.main-box-Login {
+    position: relative;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: sandybrown;
+}
+
+.Login-title-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Login-title {
+    position: relative;
+}
+
+.Login-main-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 35vh;
+    margin-top: 10vh;
+}
+
+.Login-flex-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 75vw;
+}
+
+.Login-label {
+    margin: 0;
+}
+
+.Login-email-input {
+    height: 15%;
+    border: none;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.Login-password-input {
+    height: 15%;
+    border: none;
+    border-radius: 8px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.Login-box-label-confirm {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    user-select: none;
+}

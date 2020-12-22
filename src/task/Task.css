@@ -1,0 +1,42 @@
+.Task-main-box {
+    display: flex;
+    flex-direction: row;
+    height: 6vh;
+    width: 300px;
+    margin-bottom: 1.2em;
+}
+
+.Task-box {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Task-remove-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: tomato;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.Task-remove-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
+    user-select: none;
+}
+
+.Task-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0.3em;
+    user-select: none;
+}

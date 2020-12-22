@@ -1,0 +1,77 @@
+.main-box-Login__Signup {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: sandybrown;
+    position: relative;
+}
+
+.Login__Signup-title-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Login__Signup-title {
+    position: relative;
+    user-select: none;
+}
+
+.Login__Signup-main-box {
+    position: relative;
+    height: 65vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Login__Signup-selection-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    
+}
+
+.Login__Signup-login {
+    position: relative;
+    height: 15%;
+    width: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.Login__Signup-ortext-box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Login__Signup-ortext {
+    position: relative;
+    font-size: xx-large;
+    font-weight: bolder;
+    user-select: none;
+}
+
+.Login__Signup-signup {
+    position: relative;
+    width: 50%;
+    height: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0;
+    font-size: x-large;
+    font-weight: bold;
+}

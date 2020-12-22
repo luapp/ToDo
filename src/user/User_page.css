@@ -1,0 +1,96 @@
+.User_page-main-box {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: sandybrown;
+}
+
+.User_page-name-box {
+    position: relative;
+    display: flex;
+}
+
+.User_page-name {
+    margin-left: 0.3em;
+    user-select: none;
+}
+
+.User_page-tasks-main-box {
+    position: relative;
+    min-width: 100vw;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.User_page-task-list-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+}
+
+.User_page-add-task {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.User_page-add-task-title-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.User_page-add-task-title {
+    position: relative;
+    margin: 0;
+    user-select: none;
+}
+
+.User_page-task-input {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 30%;
+    margin-top: 1.1em;
+}
+
+.task-input {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+.task-input-go-button {
+    position: relative;
+    margin-left: 0.5em;
+    height: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.User_page-task-list-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.2em;
+}
+
+.User_page-task-list-flexbox-cl {
+    display: flex;
+    flex-direction: column;
+}
