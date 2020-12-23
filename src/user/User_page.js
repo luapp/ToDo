@@ -17,13 +17,14 @@ function User_page ({user, user_name, set_user_name}) {
 
     const fetch_username = () => {
         Fire.database().ref("Users_data/" + user.user.uid + "/username").once("value").then((snapshot) => {
-            set_user_name(snapshot.node_.value_)
+            set_user_name(snapshot.val())
         })
     }
 
     const fetch_task = () => {
         Fire.database().ref("Users_data/" + user.user.uid + "/tasks_list").once("value").then((snapshot) => {
             set_task_data(snapshot.val())
+            
             snapshot.forEach((Task_childSnapshot) => {
                 //set_task_data(Task_childSnapshot.val())
                 // unused code !!!
