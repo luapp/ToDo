@@ -23,7 +23,13 @@ function User_page ({user, user_name, set_user_name}) {
 
     const fetch_task = () => {
         Fire.database().ref("Users_data/" + user.user.uid + "/tasks_list").once("value").then((snapshot) => {
-            set_task_data(snapshot.val())
+            //console.log(snapshot.val())
+            if (snapshot.val() !== null) {
+                set_task_data(Object.entries(snapshot.val()))
+            }
+            else {
+                set_task_data([])
+            }
             
             snapshot.forEach((Task_childSnapshot) => {
                 //set_task_data(Task_childSnapshot.val())
@@ -38,6 +44,8 @@ function User_page ({user, user_name, set_user_name}) {
             Fire.database().ref('Users_data/' + user.user.uid + "/tasks_list").push({
                 task_data: input_bar
             })
+            set_input_bar("")
+            fetch_task()
         }
         else {
             window.alert("No task to add !")
@@ -64,23 +72,6 @@ function User_page ({user, user_name, set_user_name}) {
         }
     }
 
-    const task_data_map = () => {
-        if (task_data !== [] && task_data !== null) {
-            return (
-                <div className = "User_page-task-list-flexbox-cl">
-                    {Object.entries(task_data).map(data => (
-                        <Task data = {data[1].task_data} data_id = {data[0]} user = {user}/>
-                    ))}
-                </div>
-            )
-        }
-        else {
-            return(
-                <div className = "User_page-task-list-flexbox-cl">
-                </div>
-            )
-        }
-    }
 
     useEffect(() => {
         fetch_username()
@@ -107,7 +98,11 @@ function User_page ({user, user_name, set_user_name}) {
                 </div>
             </div>
             <div className = "User_page-task-list-flexbox">
-                {task_data_map()}
+                <div className = "User_page-task-list-flexbox-cl">
+                    {task_data.map(data => (
+                        <Task data = {data[1].task_data} data_id = {data[0]} user = {user}/>
+                    ))}
+                </div>
             </div>
         </div>
     )

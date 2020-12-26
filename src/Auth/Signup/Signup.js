@@ -22,17 +22,25 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
         if (user_name !== "") {
             Fire.auth().createUserWithEmailAndPassword(Signup_email, Signup_password)
             .then((user) => {
-                set_user_name(user_name)
                 Fire.database().ref('Users_data/' + user.user.uid).set({
                     username: user_name,
                     email: user.user.email
+                }, (error) => {
+                    if (error) {
+                        console.log(error)
+                    }
+                    else {
+                        set_user(user)
+                        set_Page_State("user_page")
+                    }
                 })
                 set_user(user)
-                set_Page_State("user_page")
+                //set_Page_State("user_page")
             })
             .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+            console.log(errorCode + errorMessage)
             });
         }
         else {
@@ -40,6 +48,7 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
         }
         
     }
+
 
     return(
         <div className = "main-box-Signup">
@@ -49,7 +58,7 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
                     <div><h2 className = "Signup-label">Signup</h2></div>
                     <input className = "Signup-name-input" placeholder = " Name" onChange = {user_name_event} value = {user_name}></input>
                     <input className = "Signup-email-input" placeholder = " E-mail" onChange = {email_event} value = {Signup_email}></input>
-                    <input className = "Signup-password-input" placeholder = " Password" onChange = {password_event} value = {Signup_password}></input>
+                    <input className = "Signup-password-input" type = "password" placeholder = " Password" onChange = {password_event} value = {Signup_password}></input>
                     <div className = "Signup-box-label-confirm"><h2 className = "Signup-label-confirm" onClick = {Firebase_Signup_auth}>Confirm Signup</h2></div>
                 </div>
             </div>
