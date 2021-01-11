@@ -2,7 +2,10 @@
     position: relative;
     min-width: 100vw;
     min-height: 100vh;
-    background-color: sandybrown;
+    background-image: url("../../images/background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .Login-title-box {

@@ -1,20 +1,38 @@
-const {app, BrowserWindow } = require('electron')
+const {app, BrowserWindow, Tray, ipcMain } = require('electron')
 
 function createWindow () {
     const main_window = new BrowserWindow({
-      width: 320,
-      height: 450,
-      minWidth: 320,
-      minHeight: 450,
-      resizable: false,
-      frame: false,
+      width: 330,
+      height: 480,
+      minWidth: 330,
+      minHeight: 480,
+      resizable: true,
+      frame: true,
       alwaysOnTop: false,
       webPreferences: {
         nodeIntegration: true
       }
     })
-  
     main_window.loadFile("./build/index.html")
 }
-  
-app.whenReady().then(createWindow)
+
+const window_toggle = () => {
+  if (main_window.isVisible()) {
+    main_window.hide()
+  }
+}
+
+const Tray_window = () => {
+  tray = new Tray("./src/images/512logo.png")
+  tray.setToolTip('This is my application.')
+  tray.on("click", e => {
+    //window_toggle()
+  })
+}
+
+
+app.whenReady().then(() => {
+  Tray_window()
+  createWindow()  
+})
+//app.whenReady().then(createWindow)

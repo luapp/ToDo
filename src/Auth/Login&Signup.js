@@ -1,8 +1,9 @@
-import React from "react"
+import React, {useEffect} from "react"
 import "./Login&Signup.css"
+import Fire from "../config/Fire"
 
 
-function Login__Signup ({set_Page_State}) {
+function Login__Signup ({set_Page_State, set_user, user}) {
 
     const set_Page_State__login = () => {
         set_Page_State("login_page")
@@ -12,6 +13,24 @@ function Login__Signup ({set_Page_State}) {
         set_Page_State("signup_page")
     }
 
+    const set_Page_State__user_page = () => {
+        set_Page_State("user_page")
+    }
+
+    const Auth_checking = () => {
+        Fire.auth().onAuthStateChanged((user) => {
+            if (user) {
+                set_user(user)
+            }
+        });
+        if (user) {
+            set_Page_State__user_page()
+        } 
+    }
+    console.log(user)
+    useEffect (() => {
+        Auth_checking()
+    }, [user])
 
     return(
         <div className = "main-box-Login__Signup">

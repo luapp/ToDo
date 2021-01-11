@@ -6,7 +6,7 @@ import Fire from "../config/Fire"
 function Task ({data, data_id, user}) {
 
     const delete_task = () => {
-        Fire.database().ref("Users_data/" + user.user.uid + "/tasks_list/" + data_id).remove()
+        Fire.database().ref("Users_data/" + user.uid + "/tasks_list/" + data_id).remove()
     }
     return(
         <div className = "Task-main-box">

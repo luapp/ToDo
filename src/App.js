@@ -16,7 +16,7 @@ function App() {
   if (Page_State === "Login&Signup") {
     return(
       <div className = "App">
-        <Login__Signup set_Page_State = {set_Page_State}/>
+        <Login__Signup set_Page_State = {set_Page_State} set_user = {set_user} user = {user}/>
       </div>
     )
   }
@@ -37,7 +37,7 @@ function App() {
   if (Page_State === "user_page") {
     return(
       <div className = "App">
-        <User_page user = {user} user_name = {user_name} set_user_name = {set_user_name}/>
+        <User_page user = {user} user_name = {user_name} set_user_name = {set_user_name} set_Page_State = {set_Page_State}/>
       </div>
     )
   }

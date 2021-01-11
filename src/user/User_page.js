@@ -4,7 +4,7 @@ import Fire from "../config/Fire"
 import Task from "../task/Task"
 
 
-function User_page ({user, user_name, set_user_name}) {
+function User_page ({user, user_name, set_user_name, set_Page_State}) {
 
     const [show_input, set_show_input] = useState(false)
     const [input_bar, set_input_bar] = useState("")
@@ -16,13 +16,13 @@ function User_page ({user, user_name, set_user_name}) {
     }
 
     const fetch_username = () => {
-        Fire.database().ref("Users_data/" + user.user.uid + "/username").once("value").then((snapshot) => {
+        Fire.database().ref("Users_data/" + user.uid + "/username").once("value").then((snapshot) => {
             set_user_name(snapshot.val())
         })
     }
 
     const fetch_task = () => {
-        Fire.database().ref("Users_data/" + user.user.uid + "/tasks_list").once("value").then((snapshot) => {
+        Fire.database().ref("Users_data/" + user.uid + "/tasks_list").once("value").then((snapshot) => {
             //console.log(snapshot.val())
             if (snapshot.val() !== null) {
                 set_task_data(Object.entries(snapshot.val()))
@@ -41,7 +41,7 @@ function User_page ({user, user_name, set_user_name}) {
     const add_database = () => {
 
         if (input_bar !== "") {
-            Fire.database().ref('Users_data/' + user.user.uid + "/tasks_list").push({
+            Fire.database().ref('Users_data/' + user.uid + "/tasks_list").push({
                 task_data: input_bar
             })
             set_input_bar("")
@@ -52,8 +52,27 @@ function User_page ({user, user_name, set_user_name}) {
         }
     }
 
-    const input_true = () => {
-        set_show_input(true)
+    const signout = () => {
+        Fire.auth().signOut()
+        .then(() => {
+            window.alert("You has been signout !")
+            window.location.reload()
+        })
+        .catch((error) => {
+            var errorcode = error.code
+            var errormessage = error.message
+            console.log(errorcode + errormessage)
+        })
+    }
+
+    const input_toggole = () => {
+        if (show_input === true) {
+            set_show_input(false)
+        }
+        else {
+            set_show_input(true)
+        }
+        //set_show_input(true)
     }
 
     const input = () => {
@@ -85,13 +104,16 @@ function User_page ({user, user_name, set_user_name}) {
 
     return(
         <div className = "User_page-main-box">
-            <div className = "User_page-name-box"><h1 className = "User_page-name">{user_name} tasks</h1></div>
+            <div className = "User_page-name-box">
+                <h1 className = "User_page-name">{user_name} tasks</h1>
+                <div className = "User_page-signout-box"><h3 className = "User_page-signout" onClick = {signout}>Signout</h3></div>
+            </div>
             <div className = "User_page-tasks-main-box">
                 <div className = "User_page-task-list-box">
 
                     <div className = "User_page-add-task">
                         <div className = "User_page-add-task-title-flex">
-                            <h2 className = "User_page-add-task-title" onClick = {input_true}>+ Add a task</h2>
+                            <h2 className = "User_page-add-task-title" onClick = {input_toggole}>+ Add a task</h2>
                         </div>
                     </div>
                     {input()}

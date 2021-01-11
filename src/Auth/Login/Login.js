@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import "./Login.css"
 import Fire from "../../config/Fire"
+import firebase from "firebase"
 
 
 function Login ({set_user, set_Page_State}) {
@@ -16,16 +17,24 @@ function Login ({set_user, set_Page_State}) {
     }
 
     const Firebase_login_auth = () => {
-        Fire.auth().signInWithEmailAndPassword(Login_email, Login_password)
-        .then((user) => {
-            set_user(user)
-            set_Page_State("user_page")
+        Fire.auth().setPersistence("local")
+        .then(() => {
+            return Fire.auth().signInWithEmailAndPassword(Login_email, Login_password)
+            .then((user) => {
+                set_user(user.user)
+                set_Page_State("user_page")
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                window.alert(errorCode + errorMessage)
+            })
         })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            window.alert(errorCode + errorMessage)
-        });
+            window.alert(errorCode + errorMessage) 
+        })
     }
 
     return(

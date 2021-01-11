@@ -35,7 +35,6 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
                     }
                 })
                 set_user(user)
-                //set_Page_State("user_page")
             })
             .catch((error) => {
             var errorCode = error.code;

@@ -2,17 +2,33 @@
     position: relative;
     min-height: 100vh;
     min-width: 100vw;
-    background-color: sandybrown;
+    background-image: url("../images/background.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .User_page-name-box {
     position: relative;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .User_page-name {
     margin-left: 0.3em;
     user-select: none;
+}
+
+.User_page-signout-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.User_page-signout {
+    user-select: none;
+    margin-right: 2em;
 }
 
 .User_page-tasks-main-box {
