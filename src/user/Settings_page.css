@@ -1,0 +1,91 @@
+.settings_page_mainbox{
+    position: fixed;
+    width: 300px;
+    border-radius: 25px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(18px);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+}
+.settings_page_mainbox__MOZILLA{
+    position: fixed;
+    width: 300px;
+    background-color: white;
+    border-radius: 25px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;;
+}
+
+.settings_title_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+.settings_title {
+    user-select: none;
+    margin-left: 0.3em;
+    font-weight: 600;
+}
+
+.settings_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 38vh;
+    padding-left: 0.5em;
+}
+
+
+.settings_change_theme_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_change_theme {
+    font-weight: 400;
+    user-select: none;
+}
+
+.settings_change_username_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_change_username {
+    font-weight: 400;
+    user-select: none;
+}
+
+.settings_change_email_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_change_email {
+    font-weight: 400;
+    user-select: none;
+}
+
+.settings_delete_account_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_delete_account {
+    font-weight: 400;
+    user-select: none;
+}
+
+.settings_signout_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_signout {
+    color: #ff3d1b;
+    font-weight: 500;
+    user-select: none;
+}

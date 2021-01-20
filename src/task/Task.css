@@ -1,29 +1,31 @@
 .Task-main-box {
     display: flex;
     flex-direction: row;
-    height: 6vh;
     width: 300px;
     margin-bottom: 1.2em;
 }
 
 .Task-box {
     height: 100%;
-    width: 100%;
+    width: 220px;
     background-color: white;
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow-wrap: break-word;
 }
 
 .Task-remove-box {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: tomato;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
+    width: 80px;
 }
 
 .Task-remove-text {
@@ -37,6 +39,9 @@
 .Task-text {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 0.3em;
     user-select: none;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }

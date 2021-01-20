@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import "./Login.css"
 import Fire from "../../config/Fire"
-import firebase from "firebase"
 
 
 function Login ({set_user, set_Page_State}) {
@@ -22,7 +21,18 @@ function Login ({set_user, set_Page_State}) {
             return Fire.auth().signInWithEmailAndPassword(Login_email, Login_password)
             .then((user) => {
                 set_user(user.user)
-                set_Page_State("user_page")
+                if (Fire.auth().currentUser.emailVerified === true) {
+                    set_Page_State("user_page")
+                }
+                if (Fire.auth().currentUser.emailVerified === false) {
+                    Fire.auth().currentUser.sendEmailVerification()
+                    .then(() => {
+                        set_Page_State("verify")
+                    })
+                    .catch((error) => {
+                        //error
+                    })
+                }
             })
             .catch((error) => {
                 var errorCode = error.code;

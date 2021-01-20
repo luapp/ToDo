@@ -1,0 +1,64 @@
+.Verify_background {
+    background-image: url("../../images/background.svg");
+    min-height: 100vh;
+    min-width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.verify_title_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.verify_title {
+    color: black;
+    margin: 0;
+    padding: 0.8em;
+    user-select: none;
+}
+
+.verify_state_box {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.verify_state {
+    margin: 1.5em;
+    user-select: none;
+}
+
+.verify_state_box_flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.verify_state_spin_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.verify_state_spin {
+    position: relative;
+    width: 80px;
+    animation-name: loading;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    user-select: none;
+}
+
+
+
+
+
+@keyframes loading {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}

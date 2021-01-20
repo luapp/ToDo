@@ -22,19 +22,35 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
         if (user_name !== "") {
             Fire.auth().createUserWithEmailAndPassword(Signup_email, Signup_password)
             .then((user) => {
+
                 Fire.database().ref('Users_data/' + user.user.uid).set({
                     username: user_name,
-                    email: user.user.email
+                    email: user.user.email,
+                    verified: false
                 }, (error) => {
                     if (error) {
                         console.log(error)
                     }
                     else {
-                        set_user(user)
-                        set_Page_State("user_page")
+                        Fire.database().ref("Users_data/" + user.user.uid + "/settings").set({
+                            theme: "light"
+                        }, (error) => {
+                            if (error) {
+                                console.log(error)
+                            }
+                            else {
+                                set_user(user.user)
+                                user.user.sendEmailVerification()
+                                .then(() => {
+                                    set_Page_State("verify")
+                                })
+                                .catch((error) => {
+                                    console.log(error)
+                                })
+                            }
+                        })
                     }
                 })
-                set_user(user)
             })
             .catch((error) => {
             var errorCode = error.code;

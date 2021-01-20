@@ -2,13 +2,18 @@ import React, {useState, useEffect} from "react"
 import "./User_page.css"
 import Fire from "../config/Fire"
 import Task from "../task/Task"
+import setting_ico from "../images/settings_full.svg"
+import Settings_page from "./Settings_page"
 
 
-function User_page ({user, user_name, set_user_name, set_Page_State}) {
+function User_page ({user, user_name, set_user_name}) {
 
     const [show_input, set_show_input] = useState(false)
     const [input_bar, set_input_bar] = useState("")
     const [task_data, set_task_data] = useState([])
+    const [theme, set_theme] = useState("light")
+    const [display_settings, set_display_settings] = useState(false)
+    const [setting_icon_style, set_setting_icon_style] = useState("User_page_setting_icon")
 
 
     const input_event = e => {
@@ -38,6 +43,11 @@ function User_page ({user, user_name, set_user_name, set_Page_State}) {
         })
     }
 
+    const fetch_theme = () => {
+        Fire.database().ref("Users_data/" + user.uid + "/tasks_list").once("value")
+        .then((snapshot) => )
+    }
+
     const add_database = () => {
 
         if (input_bar !== "") {
@@ -52,17 +62,25 @@ function User_page ({user, user_name, set_user_name, set_Page_State}) {
         }
     }
 
-    const signout = () => {
-        Fire.auth().signOut()
-        .then(() => {
-            window.alert("You has been signout !")
-            window.location.reload()
-        })
-        .catch((error) => {
-            var errorcode = error.code
-            var errormessage = error.message
-            console.log(errorcode + errormessage)
-        })
+    const settings = () => {
+        if (!display_settings) {
+            set_display_settings(true)
+            set_setting_icon_style("User_page_setting_icon_open")
+        }
+        else {
+            set_display_settings(false)
+            set_setting_icon_style("User_page_setting_icon_close")
+        }
+    }
+
+    const setting_panel = () => {
+        if (display_settings) {
+            return(
+                <div className = "settings_page">
+                    <Settings_page set_theme = {set_theme} theme = {theme} user = {user}/>
+                </div>
+            )
+        }
     }
 
     const input_toggole = () => {
@@ -90,7 +108,18 @@ function User_page ({user, user_name, set_user_name, set_Page_State}) {
             )
         }
     }
-
+    const user_name_display = () => {
+        if (user_name !== "") {
+            return (
+                <h1 className = "User_page-name">{user_name}'s tasks</h1>
+            )
+        }
+        else {
+            return (
+                <h2 className = "User_page-name">Loading your data</h2>
+            )
+        }
+    }
 
     useEffect(() => {
         fetch_username()
@@ -105,9 +134,10 @@ function User_page ({user, user_name, set_user_name, set_Page_State}) {
     return(
         <div className = "User_page-main-box">
             <div className = "User_page-name-box">
-                <h1 className = "User_page-name">{user_name} tasks</h1>
-                <div className = "User_page-signout-box"><h3 className = "User_page-signout" onClick = {signout}>Signout</h3></div>
+                {user_name_display()}
+                <div className = "User_page-settings-box"><img className = {setting_icon_style} onClick = {settings} src = {setting_ico}></img></div>
             </div>
+            {setting_panel()}
             <div className = "User_page-tasks-main-box">
                 <div className = "User_page-task-list-box">
 

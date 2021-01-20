@@ -20,16 +20,40 @@
     user-select: none;
 }
 
-.User_page-signout-box {
+.User_page-settings-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.User_page-signout {
+.User_page_setting_icon {
     user-select: none;
-    margin-right: 2em;
+    width: 70px;
+    margin-right: 1em;
 }
+.User_page_setting_icon_open {
+    user-select: none;
+    width: 70px;
+    margin-right: 1em;
+    animation-name: loading_rotation_open;
+    animation-timing-function: linear;
+    animation-duration: 0.2s;
+}
+.User_page_setting_icon_close {
+    user-select: none;
+    width: 70px;
+    margin-right: 1em;
+    animation-name: loading_rotation_close;
+    animation-timing-function: linear;
+    animation-duration: 0.2s;
+}
+
+.settings_page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 
 .User_page-tasks-main-box {
     position: relative;
@@ -109,4 +133,17 @@
 .User_page-task-list-flexbox-cl {
     display: flex;
     flex-direction: column;
+}
+
+
+
+
+
+@keyframes loading_rotation_open {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(-120deg);}
+}
+@keyframes loading_rotation_close {
+    from {transform: rotate(-120deg);}
+    to {transform: rotate(0deg);}
 }

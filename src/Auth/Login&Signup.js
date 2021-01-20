@@ -17,17 +17,31 @@ function Login__Signup ({set_Page_State, set_user, user}) {
         set_Page_State("user_page")
     }
 
+    const set_Page_State__verify_page = () => {
+        set_Page_State("verify")
+    }
+
     const Auth_checking = () => {
         Fire.auth().onAuthStateChanged((user) => {
             if (user) {
                 set_user(user)
             }
-        });
-        if (user) {
+        })
+        if (user.emailVerified === true) {
             set_Page_State__user_page()
-        } 
+        }
+        if (user.emailVerified === false) {
+            Fire.auth().currentUser.sendEmailVerification()
+            .then(() => {
+                set_Page_State__verify_page()
+            })
+            .catch((error) => {
+                //error
+            })
+        }
     }
-    console.log(user)
+
+
     useEffect (() => {
         Auth_checking()
     }, [user])

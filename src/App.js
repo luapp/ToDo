@@ -3,7 +3,8 @@ import Login__Signup from "./Auth/Login&Signup"
 import Login from "./Auth/Login/Login"
 import Signup from "./Auth/Signup/Signup"
 import User_page from "./user/User_page"
-import './App.css';
+import './App.css'
+import Verify from "./Auth/Verify/Verify"
 
 function App() {
 
@@ -38,6 +39,13 @@ function App() {
     return(
       <div className = "App">
         <User_page user = {user} user_name = {user_name} set_user_name = {set_user_name} set_Page_State = {set_Page_State}/>
+      </div>
+    )
+  }
+  if (Page_State === "verify") {
+    return(
+      <div className = "App">
+        <Verify user = {user} set_Page_State = {set_Page_State}/>
       </div>
     )
   }
