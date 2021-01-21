@@ -5,7 +5,7 @@
     margin-bottom: 1.2em;
 }
 
-.Task-box {
+.Task-box_light {
     height: 100%;
     width: 220px;
     background-color: white;
@@ -16,8 +16,19 @@
     justify-content: center;
     overflow-wrap: break-word;
 }
+.Task-box_dark {
+    height: 100%;
+    width: 220px;
+    background-color: rgb(30, 30, 30);
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-wrap: break-word;
+}
 
-.Task-remove-box {
+.Task-remove-box_light {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -27,16 +38,35 @@
     border-top-right-radius: 8px;
     width: 80px;
 }
+.Task-remove-box_dark {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(255, 35, 0);
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 80px;
+}
 
-.Task-remove-text {
+.Task-remove-text_light {
     margin-top: 0;
     margin-bottom: 0;
     margin-right: 0.3em;
     margin-left: 0.3em;
     user-select: none;
+    color: black;
+}
+.Task-remove-text_dark {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.3em;
+    margin-left: 0.3em;
+    user-select: none;
+    color: white;
 }
 
-.Task-text {
+.Task-text_light {
     margin-top: 0;
     margin-bottom: 0;
     user-select: none;
@@ -44,4 +74,15 @@
     margin-bottom: 0.3em;
     margin-left: 0.5em;
     margin-right: 0.5em;
+    color: black;
+}
+.Task-text_dark {
+    margin-top: 0;
+    margin-bottom: 0;
+    user-select: none;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: white;
 }

@@ -14,10 +14,20 @@ function User_page ({user, user_name, set_user_name}) {
     const [theme, set_theme] = useState("light")
     const [display_settings, set_display_settings] = useState(false)
     const [setting_icon_style, set_setting_icon_style] = useState("User_page_setting_icon")
+    const [User_page_add_task, set_User_page_add_task] = useState("")
+    const [User_page_add_task_title, set_User_page_add_task_title] = useState("")
+    const [task_input_go_button, set_task_input_go_button] = useState("")
+    const [task_input, set_task_input] = useState("")
 
 
     const input_event = e => {
         set_input_bar(e.target.value)
+    }
+
+    const add_task_keypress_event = e => {
+        if (e.key === "Enter") {
+            add_database()
+        }
     }
 
     const fetch_username = () => {
@@ -44,8 +54,10 @@ function User_page ({user, user_name, set_user_name}) {
     }
 
     const fetch_theme = () => {
-        Fire.database().ref("Users_data/" + user.uid + "/tasks_list").once("value")
-        .then((snapshot) => )
+        Fire.database().ref("Users_data/" + user.uid + "/settings/theme").once("value")
+        .then((snapshot) => {
+            set_theme(snapshot.val())
+        })
     }
 
     const add_database = () => {
@@ -73,6 +85,13 @@ function User_page ({user, user_name, set_user_name}) {
         }
     }
 
+    /*
+    const close_settings = () => {
+        set_display_settings(false)
+        set_setting_icon_style("User_page_setting_icon_close")
+    }
+    */
+
     const setting_panel = () => {
         if (display_settings) {
             return(
@@ -97,8 +116,8 @@ function User_page ({user, user_name, set_user_name}) {
         if (show_input) {
             return(
                 <div className = "User_page-task-input">
-                    <input className = "task-input" placeholder = " Your new task" onChange = {input_event} value = {input_bar}></input>
-                    <button className = "task-input-go-button" onClick = {add_database}>+Add</button>
+                    <input className = {task_input} placeholder = " Your new task" onChange = {input_event} value = {input_bar} onKeyPress = {add_task_keypress_event}></input>
+                    <button className = {task_input_go_button} onClick = {add_database}>+Add</button>
                 </div>
             )
         }
@@ -121,9 +140,30 @@ function User_page ({user, user_name, set_user_name}) {
         }
     }
 
+    const page_theme = () => {
+        if (theme === "light") {
+            set_User_page_add_task("User_page-add-task_light")
+            set_User_page_add_task_title("User_page-add-task-title_light")
+            set_task_input_go_button("task-input-go-button_light")
+            set_task_input("task-input_light")
+        }
+        else {
+            set_User_page_add_task("User_page-add-task_dark")
+            set_User_page_add_task_title("User_page-add-task-title_dark")
+            set_task_input_go_button("task-input-go-button_dark")
+            set_task_input("task-input_dark")
+        }
+    }
+
+    
+    useEffect(() => {
+        page_theme()
+    }, [theme])
+
     useEffect(() => {
         fetch_username()
         fetch_task()
+        fetch_theme()
     }, [])
 
     useEffect(() => {
@@ -140,10 +180,9 @@ function User_page ({user, user_name, set_user_name}) {
             {setting_panel()}
             <div className = "User_page-tasks-main-box">
                 <div className = "User_page-task-list-box">
-
-                    <div className = "User_page-add-task">
+                    <div className = {User_page_add_task}>
                         <div className = "User_page-add-task-title-flex">
-                            <h2 className = "User_page-add-task-title" onClick = {input_toggole}>+ Add a task</h2>
+                            <h2 className = {User_page_add_task_title} onClick = {input_toggole}>+ Add a task</h2>
                         </div>
                     </div>
                     {input()}
@@ -152,7 +191,7 @@ function User_page ({user, user_name, set_user_name}) {
             <div className = "User_page-task-list-flexbox">
                 <div className = "User_page-task-list-flexbox-cl">
                     {task_data.map(data => (
-                        <Task data = {data[1].task_data} data_id = {data[0]} user = {user}/>
+                        <Task data = {data[1].task_data} data_id = {data[0]} user = {user} theme = {theme}/>
                     ))}
                 </div>
             </div>

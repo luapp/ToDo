@@ -1,4 +1,4 @@
-.settings_page_mainbox{
+.settings_page_mainbox_light {
     position: fixed;
     width: 300px;
     border-radius: 25px;
@@ -9,10 +9,30 @@
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
 }
-.settings_page_mainbox__MOZILLA{
+.settings_page_mainbox_dark {
+    position: fixed;
+    width: 300px;
+    border-radius: 25px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(18px);
+    background-color: rgba(50, 50, 50, 0.5);
+    border: none;
+}
+.settings_page_mainbox__MOZILLA_light {
     position: fixed;
     width: 300px;
     background-color: white;
+    border-radius: 25px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;;
+}
+.settings_page_mainbox__MOZILLA_dark {
+    position: fixed;
+    width: 300px;
+    background-color: rgb(60, 60, 60);
     border-radius: 25px;
     z-index: 1;
     display: flex;
@@ -24,10 +44,17 @@
     flex-direction: row;
     justify-content: left;
 }
-.settings_title {
+.settings_title_light {
     user-select: none;
     margin-left: 0.3em;
     font-weight: 600;
+    color: black;
+}
+.settings_title_dark {
+    user-select: none;
+    margin-left: 0.3em;
+    font-weight: 600;
+    color: white;
 }
 
 .settings_box {
@@ -44,9 +71,15 @@
     flex-direction: row;
     justify-content: center;
 }
-.settings_change_theme {
+.settings_change_theme_light {
     font-weight: 400;
     user-select: none;
+    color: black;
+}
+.settings_change_theme_dark {
+    font-weight: 400;
+    user-select: none;
+    color: white;
 }
 
 .settings_change_username_box {
@@ -54,9 +87,15 @@
     flex-direction: row;
     justify-content: center;
 }
-.settings_change_username {
+.settings_change_username_light {
     font-weight: 400;
     user-select: none;
+    color: black;
+}
+.settings_change_username_dark {
+    font-weight: 400;
+    user-select: none;
+    color: white;
 }
 
 .settings_change_email_box {
@@ -64,9 +103,15 @@
     flex-direction: row;
     justify-content: center;
 }
-.settings_change_email {
+.settings_change_email_light {
     font-weight: 400;
     user-select: none;
+    color: black;
+}
+.settings_change_email_dark {
+    font-weight: 400;
+    user-select: none;
+    color: white;
 }
 
 .settings_delete_account_box {
@@ -74,18 +119,31 @@
     flex-direction: row;
     justify-content: center;
 }
-.settings_delete_account {
+.settings_delete_account_light {
     font-weight: 400;
     user-select: none;
+    color: black;
+}
+.settings_delete_account_dark {
+    font-weight: 400;
+    user-select: none;
+    color: white;
 }
 
 .settings_signout_box {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
-.settings_signout {
+.settings_signout_light {
     color: #ff3d1b;
+    font-weight: 500;
+    user-select: none;
+}
+.settings_signout_dark {
+    color: #e71010;
     font-weight: 500;
     user-select: none;
 }

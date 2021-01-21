@@ -72,12 +72,21 @@
     width: 300px;
 }
 
-.User_page-add-task {
+.User_page-add-task_light {
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
     background-color: white;
+    height: 50px;
+    border-radius: 30px;
+}
+.User_page-add-task_dark {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(35, 35, 35);
     height: 50px;
     border-radius: 30px;
 }
@@ -88,10 +97,17 @@
     justify-content: center;
 }
 
-.User_page-add-task-title {
+.User_page-add-task-title_light {
     position: relative;
     margin: 0;
     user-select: none;
+    color: rgb(35, 35, 35);
+}
+.User_page-add-task-title_dark {
+    position: relative;
+    margin: 0;
+    user-select: none;
+    color: white;
 }
 
 .User_page-task-input {
@@ -103,20 +119,44 @@
     margin-top: 1.1em;
 }
 
-.task-input {
+.task-input_light {
     position: relative;
     height: 100%;
     padding: 0;
     border: none;
     border-radius: 10px;
     font-size: larger;
+    background-color: white;
+    color: rgb(35, 35, 35);
+}
+.task-input_dark {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    font-size: larger;
+    background-color: rgb(35, 35, 35);
+    color: white;
 }
 
-.task-input-go-button {
+.task-input-go-button_light {
     position: relative;
     margin-left: 0.5em;
     height: 100%;
     background-color: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+.task-input-go-button_dark {
+    position: relative;
+    margin-left: 0.5em;
+    height: 100%;
+    background-color: rgb(35, 35, 35);
+    color: white;
     border: none;
     border-radius: 10px;
     font-size: large;
