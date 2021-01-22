@@ -67,3 +67,16 @@
     font-size: medium;
     font-weight: bold;
 }
+
+.Signup_goback_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Signup_goback {
+    color: black;
+    font-weight: 500;
+    font-size: x-large;
+    user-select: none;
+}

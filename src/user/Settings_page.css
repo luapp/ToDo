@@ -1,3 +1,12 @@
+.settings_panel_main_position {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    border: none;
+    width: 100vw;
+    justify-content: center;
+    z-index: 1;
+}
 .settings_page_mainbox_light {
     position: fixed;
     width: 300px;

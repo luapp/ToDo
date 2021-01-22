@@ -18,6 +18,10 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
         set_user_name(e.target.value)
     }
 
+    const back_to_login__signup = () => {
+        set_Page_State("Login&Signup")
+    }
+
     const Firebase_Signup_auth = () => {
         if (user_name !== "") {
             Fire.auth().createUserWithEmailAndPassword(Signup_email, Signup_password)
@@ -76,6 +80,9 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
                     <input className = "Signup-password-input" type = "password" placeholder = " Password" onChange = {password_event} value = {Signup_password}></input>
                     <div className = "Signup-box-label-confirm"><h2 className = "Signup-label-confirm" onClick = {Firebase_Signup_auth}>Confirm Signup</h2></div>
                 </div>
+            </div>
+            <div className = "Signup_goback_box">
+                <h1 className = "Signup_goback" onClick = {back_to_login__signup}>Go back</h1>
             </div>
         </div>
     )

@@ -15,6 +15,10 @@ function Login ({set_user, set_Page_State}) {
         set_Login_password(e.target.value)
     }
 
+    const back_to_login__signup = () => {
+        set_Page_State("Login&Signup")
+    }
+
     const Firebase_login_auth = () => {
         Fire.auth().setPersistence("local")
         .then(() => {
@@ -57,6 +61,9 @@ function Login ({set_user, set_Page_State}) {
                     <input type = "password" className = "Login-password-input" placeholder = " Password" onChange = {password_event} value = {Login_password}></input>
                     <div className = "Login-box-label-confirm"><h2 className = "Login-label-confirm" onClick = {Firebase_login_auth}>Confirm login</h2></div>
                 </div>
+            </div>
+            <div className = "Login_goback_box">
+                <h1 className = "Login_goback" onClick = {back_to_login__signup}>Go back</h1>
             </div>
         </div>
     )

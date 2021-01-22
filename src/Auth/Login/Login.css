@@ -59,3 +59,16 @@
     justify-content: center;
     user-select: none;
 }
+
+.Login_goback_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.Login_goback {
+    color: black;
+    font-weight: 500;
+    font-size: x-large;
+    user-select: none;
+}

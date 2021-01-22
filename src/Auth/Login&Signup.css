@@ -49,6 +49,7 @@
     border-radius: 0;
     font-size: x-large;
     font-weight: bold;
+    padding: 0;
 }
 
 .Login__Signup-ortext-box {
@@ -61,7 +62,7 @@
 .Login__Signup-ortext {
     position: relative;
     font-size: xx-large;
-    font-weight: bolder;
+    font-weight: 600;
     user-select: none;
 }
 
@@ -77,4 +78,5 @@
     border-radius: 0;
     font-size: x-large;
     font-weight: bold;
+    padding: 0;
 }

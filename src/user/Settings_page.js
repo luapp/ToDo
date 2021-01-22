@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import "./Settings_page.css"
 import Fire from "../config/Fire"
+import Change_name_page from "./Change_name_page"
 
 
 function Settings_page ({set_theme, theme, user}) {
@@ -14,6 +15,7 @@ function Settings_page ({set_theme, theme, user}) {
     const [settings_signout, set_settings_signout] = useState("")
     const [settings_title, set_settings_title] = useState("")
     const [signout_box_style, set_signout_box_style] = useState("transparent")
+    const settings_panel_value = ("main")
 
 
     const browser = () => {
@@ -102,6 +104,58 @@ function Settings_page ({set_theme, theme, user}) {
         }
     }
 
+    const settings_panel = () => {
+        if (settings_panel_value === "main") {
+            return(
+                <div className = {settings_page_browsersupport}>
+
+                    <div className = "settings_title_box"><h1 className = {settings_title}>Settings</h1></div>
+                        <div className = "settings_box">
+                            <div className = "settings_change_theme_box">
+                                <h3 className = {settings_change_theme} onClick = {toggle_theme}>{settings_page_theme_text_display}</h3>
+                            </div>
+                            <div className = "settings_change_username_box">
+                                <h3 className = {settings_change_username}>Change user name</h3>
+                            </div>
+                            <div className = "settings_change_email_box">
+                                <h3 className = {settings_change_email}>Change email address</h3>
+                            </div>
+                            <div className = "settings_delete_account_box">
+                                <h3 className = {settings_delete_account}>Delete your account</h3>
+                            </div>
+                        </div>
+                    <div className = "settings_signout_box" onMouseEnter = {mouse_enter_signout_box} onMouseLeave = {mouse_leave_signout_box} style = {{backgroundColor: signout_box_style}}>
+                        <h2 className = {settings_signout} onClick = {signout}>Signout</h2>
+                    </div>
+                </div>
+            )
+        }
+        if (settings_panel_value === "change_name") {
+            return(
+                <div className = {settings_page_browsersupport}>
+                    <div className = "settings_title_box"><h2 className = {settings_title}>Change name</h2></div>
+                        <div className = "settings_box">
+                            <div className = "settings_change_theme_box">
+                                <h3 className = "">Active name</h3>
+                            </div>
+                            <div className = "">
+                                <h3 className = "">name</h3>
+                            </div>
+                            <div className = "settings_change_email_box">
+                                <h3 className = "">New name</h3>
+                            </div>
+                            <div className = "settings_delete_account_box">
+                                <input placeholder = "Enter a new name"></input>
+                            </div>
+                        </div>
+                    <div className = "settings_signout_box">
+                        <h2 className = "">Your new name can't be the same as the old one !</h2>
+                    </div>
+                </div>
+            )
+        }
+    }
+
 
     useEffect(() => {
         browser()
@@ -110,25 +164,8 @@ function Settings_page ({set_theme, theme, user}) {
 
 
     return(
-        <div className = {settings_page_browsersupport}>
-            <div className = "settings_title_box"><h1 className = {settings_title}>Settings</h1></div>
-            <div className = "settings_box">
-                <div className = "settings_change_theme_box">
-                    <h3 className = {settings_change_theme} onClick = {toggle_theme}>{settings_page_theme_text_display}</h3>
-                </div>
-                <div className = "settings_change_username_box">
-                    <h3 className = {settings_change_username}>Change user name</h3>
-                </div>
-                <div className = "settings_change_email_box">
-                    <h3 className = {settings_change_email}>Change email address</h3>
-                </div>
-                <div className = "settings_delete_account_box">
-                    <h3 className = {settings_delete_account}>Delete your account</h3>
-                </div>
-            </div>
-            <div className = "settings_signout_box" onMouseEnter = {mouse_enter_signout_box} onMouseLeave = {mouse_leave_signout_box} style = {{backgroundColor: signout_box_style}}>
-                    <h2 className = {settings_signout} onClick = {signout}>Signout</h2>
-            </div>
+        <div className = "settings_panel_main_position">
+            {settings_panel()}
         </div>
     )
 }
