@@ -2,6 +2,9 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
+  "license": "gpl-3.0",
+  "author": "Paul Le Gall",
+  "description": "This is a WebApp to note what you have to do",
   "homepage": "./",
   "main": "./src/electron/main.js",
   "dependencies": {

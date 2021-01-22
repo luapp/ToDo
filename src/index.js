@@ -5,6 +5,8 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+//Made by Paul Le Gall
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

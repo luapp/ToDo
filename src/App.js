@@ -6,6 +6,8 @@ import User_page from "./user/User_page"
 import './App.css'
 import Verify from "./Auth/Verify/Verify"
 
+//Made by Paul Le Gall
+
 function App() {
 
   // Login&Signup is the landing page...
