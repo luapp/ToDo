@@ -15,7 +15,8 @@ function Settings_page ({set_theme, theme, user}) {
     const [settings_signout, set_settings_signout] = useState("")
     const [settings_title, set_settings_title] = useState("")
     const [signout_box_style, set_signout_box_style] = useState("transparent")
-    const settings_panel_value = ("main")
+    const [style, set_style] = useState("")
+    const [settings_panel_value, set_settings_panel_value] = useState("main")
 
 
     const browser = () => {
@@ -92,6 +93,7 @@ function Settings_page ({set_theme, theme, user}) {
             set_settings_delete_account("settings_delete_account_light")
             set_settings_signout("settings_signout_light")
             set_settings_title("settings_title_light")
+            set_style("black")
         }
         if (theme === "dark") {
             set_settings_page_theme_text_display("Switch to light mode")
@@ -101,7 +103,15 @@ function Settings_page ({set_theme, theme, user}) {
             set_settings_delete_account("settings_delete_account_dark")
             set_settings_signout("settings_signout_dark")
             set_settings_title("settings_title_dark")
+            set_style("white")
         }
+    }
+
+    const goback = () => {
+        set_settings_panel_value("main")
+    }
+    const changeuser = () => {
+        set_settings_panel_value("change_name")
     }
 
     const settings_panel = () => {
@@ -115,7 +125,7 @@ function Settings_page ({set_theme, theme, user}) {
                                 <h3 className = {settings_change_theme} onClick = {toggle_theme}>{settings_page_theme_text_display}</h3>
                             </div>
                             <div className = "settings_change_username_box">
-                                <h3 className = {settings_change_username}>Change user name</h3>
+                                <h3 className = {settings_change_username} onClick = {changeuser}>Change user name</h3>
                             </div>
                             <div className = "settings_change_email_box">
                                 <h3 className = {settings_change_email}>Change email address</h3>
@@ -131,6 +141,33 @@ function Settings_page ({set_theme, theme, user}) {
             )
         }
         if (settings_panel_value === "change_name") {
+            return(
+                <div className = {settings_page_browsersupport}>
+                    <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>Change name</h2></div>
+                        <div className = "settings_box__change_name">
+                            <div className = "settings_change_theme_box">
+                                <h3 className = "" style = {{color:style}}>Active name</h3>
+                            </div>
+                            <div className = "settings_old_name_box">
+                                <h3 className = "settings_old_name_text" style = {{color:style}}>name</h3>
+                            </div>
+                            <hr className = "settings_change_name_separator" style = {{color:style}}></hr>
+                            <div className = "settings_change_new_name_box">
+                                <h3 className = "settings_change_new_name_text" style = {{color:style}}>New name</h3>
+                            </div>
+                            <div className = "settings_new_name_input_box">
+                                <input className = "settings_new_name_input" placeholder = "  Enter a new name"></input>
+                            </div>
+                        </div>
+                    <div className = "settings_new_old_name_text_box">
+                        <div className = "settings_new_old_name_text_box_flexcl">
+                            <h2 className = "settings_new_old_name_text" style = {{color:style}}>Your new name can't be the same as the old one !</h2>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        if (settings_panel_value === "reset_email") {
             return(
                 <div className = {settings_page_browsersupport}>
                     <div className = "settings_title_box"><h2 className = {settings_title}>Change name</h2></div>
@@ -149,7 +186,7 @@ function Settings_page ({set_theme, theme, user}) {
                             </div>
                         </div>
                     <div className = "settings_signout_box">
-                        <h2 className = "">Your new name can't be the same as the old one !</h2>
+                        <h2 className = "settings_new_old_text">Your new name can't be the same as the old one !</h2>
                     </div>
                 </div>
             )

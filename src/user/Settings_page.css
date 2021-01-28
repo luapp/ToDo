@@ -156,3 +156,63 @@
     font-weight: 500;
     user-select: none;
 }
+
+.settings_box__change_name {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 38vh;
+}
+
+.settings_new_old_name_text_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 12vh;
+}
+.settings_new_old_name_text_box_flexcl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.settings_new_old_name_text {
+    font-size: x-small;
+    user-select: none;
+    font-weight: 200;
+    font-size: small;
+}
+
+.settings_new_name_input_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 5vh;
+}
+.settings_new_name_input {
+    border: none;
+    border-radius: 15px;
+}
+
+.settings_old_name_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_old_name_text {
+    margin-top: 0;
+    user-select: none;
+}
+
+.settings_change_new_name_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_change_new_name_text {
+    user-select: none;
+}
+
+.settings_change_name_separator {
+    width: 65%;
+}
