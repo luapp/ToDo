@@ -84,6 +84,9 @@ function User_page ({user, user_name, set_user_name}) {
             set_setting_icon_style("User_page_setting_icon_close")
         }
     }
+    const settings_false = () => {
+        set_display_settings(false)
+    }
 
     /*
     const close_settings = () => {
@@ -188,7 +191,7 @@ function User_page ({user, user_name, set_user_name}) {
                     {input()}
                 </div>
             </div>
-            <div className = "User_page-task-list-flexbox">
+            <div className = "User_page-task-list-flexbox" onClick = {settings_false}>
                 <div className = "User_page-task-list-flexbox-cl">
                     {task_data.map(data => (
                         <Task data = {data[1].task_data} data_id = {data[0]} user = {user} theme = {theme}/>
