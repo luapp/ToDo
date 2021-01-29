@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react"
 import "./Settings_page.css"
 import Fire from "../config/Fire"
-import Change_name_page from "./Change_name_page"
 
 
 function Settings_page ({set_theme, theme, user}) {
@@ -15,6 +14,7 @@ function Settings_page ({set_theme, theme, user}) {
     const [settings_signout, set_settings_signout] = useState("")
     const [settings_title, set_settings_title] = useState("")
     const [signout_box_style, set_signout_box_style] = useState("transparent")
+    const [delete_account_button_style, set_delete_account_button_style] = useState("#f73f4f")
     const [style, set_style] = useState("")
     const [settings_panel_value, set_settings_panel_value] = useState("main")
 
@@ -110,9 +110,23 @@ function Settings_page ({set_theme, theme, user}) {
     const goback = () => {
         set_settings_panel_value("main")
     }
-    const changeuser = () => {
+    const change_user_name_panel = () => {
         set_settings_panel_value("change_name")
     }
+    const reset_email_panel = () => {
+        set_settings_panel_value("reset_email")
+    }
+    const delete_account_panel = () => {
+        set_settings_panel_value("delete_account")
+    }
+
+    const delete_account__button_selected_style = () => {
+        set_delete_account_button_style("#f8051a")
+    }
+    const delete_account__button_unselected_style = () => {
+        set_delete_account_button_style("#f73f4f")
+    }
+
 
     const settings_panel = () => {
         if (settings_panel_value === "main") {
@@ -125,13 +139,13 @@ function Settings_page ({set_theme, theme, user}) {
                                 <h3 className = {settings_change_theme} onClick = {toggle_theme}>{settings_page_theme_text_display}</h3>
                             </div>
                             <div className = "settings_change_username_box">
-                                <h3 className = {settings_change_username} onClick = {changeuser}>Change user name</h3>
+                                <h3 className = {settings_change_username} onClick = {change_user_name_panel}>Change user name</h3>
                             </div>
                             <div className = "settings_change_email_box">
-                                <h3 className = {settings_change_email}>Change email address</h3>
+                                <h3 className = {settings_change_email} onClick = {reset_email_panel}>Change email address</h3>
                             </div>
                             <div className = "settings_delete_account_box">
-                                <h3 className = {settings_delete_account}>Delete your account</h3>
+                                <h3 className = {settings_delete_account} onClick = {delete_account_panel}>Delete your account</h3>
                             </div>
                         </div>
                     <div className = "settings_signout_box" onMouseEnter = {mouse_enter_signout_box} onMouseLeave = {mouse_leave_signout_box} style = {{backgroundColor: signout_box_style}}>
@@ -145,8 +159,8 @@ function Settings_page ({set_theme, theme, user}) {
                 <div className = {settings_page_browsersupport}>
                     <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>Change name</h2></div>
                         <div className = "settings_box__change_name">
-                            <div className = "settings_change_theme_box">
-                                <h3 className = "" style = {{color:style}}>Active name</h3>
+                            <div className = "settings_active_name_box">
+                                <h3 className = "settings_active_name_text" style = {{color:style}}>Active name</h3>
                             </div>
                             <div className = "settings_old_name_box">
                                 <h3 className = "settings_old_name_text" style = {{color:style}}>name</h3>
@@ -156,7 +170,7 @@ function Settings_page ({set_theme, theme, user}) {
                                 <h3 className = "settings_change_new_name_text" style = {{color:style}}>New name</h3>
                             </div>
                             <div className = "settings_new_name_input_box">
-                                <input className = "settings_new_name_input" placeholder = "  Enter a new name"></input>
+                                <input className = "settings_new_name_input" placeholder = " Enter a new name"></input>
                             </div>
                         </div>
                     <div className = "settings_new_old_name_text_box">
@@ -170,24 +184,49 @@ function Settings_page ({set_theme, theme, user}) {
         if (settings_panel_value === "reset_email") {
             return(
                 <div className = {settings_page_browsersupport}>
-                    <div className = "settings_title_box"><h2 className = {settings_title}>Change name</h2></div>
-                        <div className = "settings_box">
-                            <div className = "settings_change_theme_box">
-                                <h3 className = "">Active name</h3>
+                    <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>Change email</h2></div>
+                        <div className = "settings_box__change_email">
+                            <div className = "settings_active_email_box">
+                                <h3 className = "settings_active_email_text" style = {{color:style}}>Active email</h3>
                             </div>
-                            <div className = "">
-                                <h3 className = "">name</h3>
+                            <div className = "settings_old_email_box">
+                                <h3 className = "settings_old_email_text" style = {{color:style}}>email</h3>
                             </div>
-                            <div className = "settings_change_email_box">
-                                <h3 className = "">New name</h3>
+                            <hr className = "settings_change_email_separator" style = {{color:style}}></hr>
+                            <div className = "settings_change_new_email_box">
+                                <h3 className = "settings_change_new_email_text" style = {{color:style}}>New email</h3>
                             </div>
-                            <div className = "settings_delete_account_box">
-                                <input placeholder = "Enter a new name"></input>
+                            <div className = "settings_new_email_input_box">
+                                <input className = "settings_new_email_input" placeholder = " Enter a new email"></input>
                             </div>
                         </div>
-                    <div className = "settings_signout_box">
-                        <h2 className = "settings_new_old_text">Your new name can't be the same as the old one !</h2>
+                    <div className = "settings_new_old_email_text_box">
+                        <div className = "settings_new_old_email_text_box_flexcl">
+                            <h2 className = "settings_new_old_email_text" style = {{color:style}}>Your new email can't be the same as the old one !</h2>
+                        </div>
                     </div>
+                </div>
+            )
+        }
+        if (settings_panel_value === "delete_account") {
+            return(
+                <div className = {settings_page_browsersupport}>
+                    <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>DELETE ACCOUNT</h2></div>
+                        <div className = "settings_box__delete_account">
+                            <div className = "settings_delete_account_condition_box">
+                                <h3 className = "settings_delete_account_condition_text" style = {{color:style}}>You are about to delete your account! All your data will be deleted and you wont be able to recover it.</h3>
+                            </div>
+                            <hr className = "settings_delete_account_separator" style = {{color:style}}></hr>
+                            <div className = "settings_delete_account_password_box">
+                                <h3 className = "settings_delete_account_password_text" style = {{color:style}}>Type your password to confirm</h3>
+                            </div>
+                            <div className = "settings_delete_account_input_box">
+                                <input className = "settings_delete_account_input" placeholder = " Password"></input>
+                            </div>
+                        </div>
+                        <div className = "settings_delete_account_button_box">
+                            <button className = "settings_delete_account_button" style = {{backgroundColor: delete_account_button_style}} onMouseEnter = {delete_account__button_selected_style} onMouseLeave = {delete_account__button_unselected_style}>Delete my account</button>
+                        </div>
                 </div>
             )
         }

@@ -192,6 +192,10 @@
 .settings_new_name_input {
     border: none;
     border-radius: 15px;
+    font-size: medium;
+    font-weight: bold;
+    height: 90%;
+    width: 60%;
 }
 
 .settings_old_name_box {
@@ -215,4 +219,161 @@
 
 .settings_change_name_separator {
     width: 65%;
+}
+
+.settings_active_name_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.settings_active_name_text {
+    user-select: none;
+}
+
+.settings_box__change_email {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 38vh;
+}
+
+.settings_new_old_email_text_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 12vh;
+}
+.settings_new_old_email_text_box_flexcl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.settings_new_old_email_text {
+    font-size: x-small;
+    user-select: none;
+    font-weight: 200;
+    font-size: small;
+}
+
+.settings_new_email_input_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 5vh;
+}
+.settings_new_email_input {
+    border: none;
+    border-radius: 15px;
+    font-size: medium;
+    font-weight: bold;
+    height: 90%;
+    width: 60%;
+}
+
+.settings_old_email_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_old_email_text {
+    margin-top: 0;
+    user-select: none;
+}
+
+.settings_change_new_email_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.settings_change_new_email_text {
+    user-select: none;
+}
+
+.settings_change_email_separator {
+    width: 65%;
+}
+
+.settings_active_email_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.settings_active_email_text {
+    user-select: none;
+}
+
+.settings_box__delete_account {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 38vh;
+}
+
+.settings_delete_account_condition_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 12vh;
+}
+
+.settings_delete_account_condition_text {
+    user-select: none;
+    margin: 0;
+    font-weight: 300;
+    font-size: small;
+    margin-left: 0.8em;
+    margin-right: 0.8em;
+    text-align: center;
+}
+
+.settings_delete_account_separator {
+    width: 65%;
+
+}
+
+.settings_delete_account_password_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.settings_delete_account_password_text {
+    user-select: none;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.settings_delete_account_input_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 5vh;
+}
+
+.settings_delete_account_input {
+    border: none;
+    border-radius: 15px;
+    font-size: medium;
+    font-weight: bold;
+    height: 90%;
+    width: 60%;
+}
+
+.settings_delete_account_button_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 9vh;
+}
+
+.settings_delete_account_button {
+    border: none;
+    height: 60%;
+    width: 55%;
+    border-radius: 12px;
+    font-weight: 600;
 }
