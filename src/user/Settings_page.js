@@ -207,6 +207,27 @@ function Settings_page ({set_theme, theme, user}) {
             })
         }
     }
+    const delete_account_submit_button_event = e => {
+        const credential = firebase.auth.EmailAuthProvider.credential(Fire.auth().currentUser.email, delete_password)
+        Fire.auth().currentUser.reauthenticateWithCredential(credential)
+        .then(() => {
+            Fire.database().ref("Users_data/" + user.uid + "/settings").remove().then(() => {
+                Fire.database().ref("Users_data/" + user.uid + "/email").remove().then(() => {
+                    Fire.database().ref("Users_data/" + user.uid + "/username").remove().then(() => {
+                        Fire.database().ref("Users_data/" + user.uid + "/email").remove().then(() => {
+                            Fire.database().ref("Users_data/" + user.uid + "/verified").remove().then(() => {
+                                Fire.auth().currentUser.delete()
+                                .then(() => {
+                                    window.alert("Your account has been deleted !")
+                                    window.location.reload()
+                                })
+                            })
+                        })
+                    })
+                })
+            })      
+        })
+    }
 
     const settings_panel = () => {
         if (settings_panel_value === "main") {
@@ -305,7 +326,7 @@ function Settings_page ({set_theme, theme, user}) {
                             </div>
                         </div>
                         <div className = "settings_delete_account_button_box">
-                            <button className = "settings_delete_account_button" style = {{backgroundColor: delete_account_button_style}} onMouseEnter = {delete_account__button_selected_style} onMouseLeave = {delete_account__button_unselected_style} onClick = {delete_account_submit_event}>Delete my account</button>
+                            <button className = "settings_delete_account_button" style = {{backgroundColor: delete_account_button_style}} onMouseEnter = {delete_account__button_selected_style} onMouseLeave = {delete_account__button_unselected_style} onClick = {delete_account_submit_button_event}>Delete my account</button>
                         </div>
                 </div>
             )
