@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import "./Settings_page.css"
 import Fire from "../config/Fire"
+import firebase from "firebase"
 
 
 function Settings_page ({set_theme, theme, user}) {
@@ -17,6 +18,10 @@ function Settings_page ({set_theme, theme, user}) {
     const [delete_account_button_style, set_delete_account_button_style] = useState("#f73f4f")
     const [style, set_style] = useState("")
     const [settings_panel_value, set_settings_panel_value] = useState("main")
+    const [new_name, set_new_name] = useState("")
+    const [new_email, set_new_email] = useState("")
+    const [delete_password, set_delete_password] = useState("")
+    const [delete_auth, set_delete_auth] = useState("")
 
 
     const browser = () => {
@@ -127,6 +132,81 @@ function Settings_page ({set_theme, theme, user}) {
         set_delete_account_button_style("#f73f4f")
     }
 
+    const new_name_input_event = e => {
+        set_new_name(e.target.value)
+    }
+    const new_name_input_submit_event = e => {
+        if (e.key === "Enter") {
+            if (user.displayName !== new_name) {
+                Fire.auth().currentUser.updateProfile({
+                    displayName: new_name
+                })
+                .then(() => {
+                    window.alert("Your user name has been changed successfully !")
+                    window.location.reload()
+                })
+                .catch((error) => {
+                    window.alert("Error...")
+                    //error
+                })
+            }
+            else {
+                window.alert("Your new name can't be the same as the old one !")
+            }
+        }
+    }
+
+    const new_email_input_event = e => {
+        set_new_email(e.target.value)
+    }
+    const new_email_input_submit_event = e => {
+        if (e.key === "Enter") {
+            if (user.email !== new_email) {
+                Fire.auth().currentUser.updateEmail(new_email)
+                .then(() => {
+                    window.alert("Your account email name has been changed successfully !")
+                    window.location.reload()
+                })
+                .catch((error) => {
+                    window.alert(error)
+                })
+            }
+            else {
+                window.alert("Your new name can't be the same as the old one !")
+            }
+        }
+    }
+
+    const delete_input_event = e => {
+        set_delete_password(e.target.value)
+    }
+    const delete_account_submit_event = e => {
+        if (e.key === "Enter") {
+            const credential = firebase.auth.EmailAuthProvider.credential(Fire.auth().currentUser.email, delete_password)
+            Fire.auth().currentUser.reauthenticateWithCredential(credential)
+            .then(() => {
+                Fire.database().ref("Users_data/" + user.uid + "/settings").remove().then(() => {
+                    Fire.database().ref("Users_data/" + user.uid + "/email").remove().then(() => {
+                        Fire.database().ref("Users_data/" + user.uid + "/username").remove().then(() => {
+                            Fire.database().ref("Users_data/" + user.uid + "/email").remove().then(() => {
+                                Fire.database().ref("Users_data/" + user.uid + "/verified").remove().then(() => {
+                                    Fire.auth().currentUser.delete()
+                                    .then(() => {
+                                        window.alert("Your account has been deleted !")
+                                        window.location.reload()
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+                
+                
+                
+                
+            })
+        }
+    }
 
     const settings_panel = () => {
         if (settings_panel_value === "main") {
@@ -163,14 +243,14 @@ function Settings_page ({set_theme, theme, user}) {
                                 <h3 className = "settings_active_name_text" style = {{color:style}}>Active name</h3>
                             </div>
                             <div className = "settings_old_name_box">
-                                <h3 className = "settings_old_name_text" style = {{color:style}}>name</h3>
+                                <h3 className = "settings_old_name_text" style = {{color:style}}>{user.displayName}</h3>
                             </div>
                             <hr className = "settings_change_name_separator" style = {{color:style}}></hr>
                             <div className = "settings_change_new_name_box">
                                 <h3 className = "settings_change_new_name_text" style = {{color:style}}>New name</h3>
                             </div>
                             <div className = "settings_new_name_input_box">
-                                <input className = "settings_new_name_input" placeholder = " Enter a new name"></input>
+                                <input className = "settings_new_name_input" placeholder = " Enter a new name" onChange = {new_name_input_event} value = {new_name} onKeyPress = {new_name_input_submit_event}></input>
                             </div>
                         </div>
                     <div className = "settings_new_old_name_text_box">
@@ -190,14 +270,14 @@ function Settings_page ({set_theme, theme, user}) {
                                 <h3 className = "settings_active_email_text" style = {{color:style}}>Active email</h3>
                             </div>
                             <div className = "settings_old_email_box">
-                                <h3 className = "settings_old_email_text" style = {{color:style}}>email</h3>
+                                <h3 className = "settings_old_email_text" style = {{color:style}}>{user.email}</h3>
                             </div>
                             <hr className = "settings_change_email_separator" style = {{color:style}}></hr>
                             <div className = "settings_change_new_email_box">
                                 <h3 className = "settings_change_new_email_text" style = {{color:style}}>New email</h3>
                             </div>
                             <div className = "settings_new_email_input_box">
-                                <input className = "settings_new_email_input" placeholder = " Enter a new email"></input>
+                                <input className = "settings_new_email_input" placeholder = " Enter a new email" type = "email" onKeyPress = {new_email_input_submit_event} onChange = {new_email_input_event} value = {new_email}></input>
                             </div>
                         </div>
                     <div className = "settings_new_old_email_text_box">
@@ -221,11 +301,11 @@ function Settings_page ({set_theme, theme, user}) {
                                 <h3 className = "settings_delete_account_password_text" style = {{color:style}}>Type your password to confirm</h3>
                             </div>
                             <div className = "settings_delete_account_input_box">
-                                <input className = "settings_delete_account_input" placeholder = " Password"></input>
+                                <input className = "settings_delete_account_input" placeholder = " Password" type = "password" onChange = {delete_input_event} value = {delete_password} onKeyPress = {delete_account_submit_event}></input>
                             </div>
                         </div>
                         <div className = "settings_delete_account_button_box">
-                            <button className = "settings_delete_account_button" style = {{backgroundColor: delete_account_button_style}} onMouseEnter = {delete_account__button_selected_style} onMouseLeave = {delete_account__button_unselected_style}>Delete my account</button>
+                            <button className = "settings_delete_account_button" style = {{backgroundColor: delete_account_button_style}} onMouseEnter = {delete_account__button_selected_style} onMouseLeave = {delete_account__button_unselected_style} onClick = {delete_account_submit_event}>Delete my account</button>
                         </div>
                 </div>
             )

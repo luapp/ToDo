@@ -19,7 +19,7 @@ function User_page ({user, user_name, set_user_name}) {
     const [task_input_go_button, set_task_input_go_button] = useState("")
     const [task_input, set_task_input] = useState("")
 
-
+    //console.log(user)
     const input_event = e => {
         set_input_bar(e.target.value)
     }
@@ -31,9 +31,7 @@ function User_page ({user, user_name, set_user_name}) {
     }
 
     const fetch_username = () => {
-        Fire.database().ref("Users_data/" + user.uid + "/username").once("value").then((snapshot) => {
-            set_user_name(snapshot.val())
-        })
+        set_user_name(Fire.auth().currentUser.displayName)
     }
 
     const fetch_task = () => {
@@ -45,11 +43,6 @@ function User_page ({user, user_name, set_user_name}) {
             else {
                 set_task_data([])
             }
-            
-            snapshot.forEach((Task_childSnapshot) => {
-                //set_task_data(Task_childSnapshot.val())
-                // unused code !!!
-            })
         })
     }
 
@@ -181,7 +174,7 @@ function User_page ({user, user_name, set_user_name}) {
                 <div className = "User_page-settings-box"><img className = {setting_icon_style} onClick = {settings} src = {setting_ico}></img></div>
             </div>
             {setting_panel()}
-            <div className = "User_page-tasks-main-box">
+            <div className = "User_page-tasks-main-box" onClick = {settings_false}>
                 <div className = "User_page-task-list-box">
                     <div className = {User_page_add_task}>
                         <div className = "User_page-add-task-title-flex">

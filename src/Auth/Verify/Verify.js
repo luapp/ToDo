@@ -19,6 +19,9 @@ function Verify ({user, set_Page_State}) {
             Fire.auth().onAuthStateChanged((user) => {
                 if (user.emailVerified === false) {
                     Fire.auth().currentUser.reload()
+                    Fire.database().ref('Users_data/' + user.uid).update({
+                        verified: false
+                    })
                 }
                 else {
                     Fire.database().ref('Users_data/' + user.uid).update({
@@ -32,10 +35,23 @@ function Verify ({user, set_Page_State}) {
         }, 100)
     }
 
+    const sync_username_displayname = () => {
+        Fire.database().ref("Users_data/" + user.uid + "/username").on("value", (snapshot => {
+            const displayname = snapshot.val()
+            Fire.auth().currentUser.updateProfile({
+                displayName: displayname
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }))
+    }
+
 
     useEffect (() => {
         verify_idtoken()
         verify_database_refresh()
+        sync_username_displayname()
     }, [])
 
 
