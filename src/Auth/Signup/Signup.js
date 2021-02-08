@@ -22,6 +22,53 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
         set_Page_State("Login&Signup")
     }
 
+    const Firebase_Signup_auth_keypress = e => {
+        if (e.key === "Enter") {
+            if (user_name !== "") {
+                Fire.auth().createUserWithEmailAndPassword(Signup_email, Signup_password)
+                .then((user) => {
+    
+                    Fire.database().ref('Users_data/' + user.user.uid).set({
+                        username: user_name,
+                        email: user.user.email,
+                        verified: false
+                    }, (error) => {
+                        if (error) {
+                            console.log(error)
+                        }
+                        else {
+                            Fire.database().ref("Users_data/" + user.user.uid + "/settings").set({
+                                theme: "light"
+                            }, (error) => {
+                                if (error) {
+                                    console.log(error)
+                                }
+                                else {
+                                    set_user(user.user)
+                                    user.user.sendEmailVerification()
+                                    .then(() => {
+                                        set_Page_State("verify")
+                                    })
+                                    .catch((error) => {
+                                        console.log(error)
+                                    })
+                                }
+                            })
+                        }
+                    })
+                })
+                .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode + errorMessage)
+                });
+            }
+            else {
+                window.alert("Please type your name")
+            }
+        }
+    }
+
     const Firebase_Signup_auth = () => {
         if (user_name !== "") {
             Fire.auth().createUserWithEmailAndPassword(Signup_email, Signup_password)
@@ -77,7 +124,7 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
                     <div><h2 className = "Signup-label">Signup</h2></div>
                     <input className = "Signup-name-input" placeholder = " Name" onChange = {user_name_event} value = {user_name}></input>
                     <input className = "Signup-email-input" placeholder = " E-mail" onChange = {email_event} value = {Signup_email}></input>
-                    <input className = "Signup-password-input" type = "password" placeholder = " Password" onChange = {password_event} value = {Signup_password}></input>
+                    <input className = "Signup-password-input" type = "password" placeholder = " Password" onChange = {password_event} value = {Signup_password} onKeyPress = {Firebase_Signup_auth_keypress}></input>
                     <div className = "Signup-box-label-confirm"><h2 className = "Signup-label-confirm" onClick = {Firebase_Signup_auth}>Confirm Signup</h2></div>
                 </div>
             </div>

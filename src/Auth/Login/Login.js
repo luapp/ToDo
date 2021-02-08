@@ -19,6 +19,39 @@ function Login ({set_user, set_Page_State}) {
         set_Page_State("Login&Signup")
     }
 
+    const Firebase_login_auth_keypress = e => {
+        if (e.key === "Enter") {
+            Fire.auth().setPersistence("local")
+            .then(() => {
+                return Fire.auth().signInWithEmailAndPassword(Login_email, Login_password)
+                .then((user) => {
+                    set_user(user.user)
+                    if (Fire.auth().currentUser.emailVerified === true) {
+                        set_Page_State("user_page")
+                    }
+                    if (Fire.auth().currentUser.emailVerified === false) {
+                        Fire.auth().currentUser.sendEmailVerification()
+                        .then(() => {
+                            set_Page_State("verify")
+                        })
+                        .catch((error) => {
+                            //error
+                        })
+                    }
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    window.alert(errorCode + errorMessage)
+                })
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                window.alert(errorCode + errorMessage) 
+            })
+        }
+    }
     const Firebase_login_auth = () => {
         Fire.auth().setPersistence("local")
         .then(() => {
@@ -41,15 +74,16 @@ function Login ({set_user, set_Page_State}) {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                window.alert(errorCode + errorMessage)
+                window.alert(errorMessage)
             })
         })
         .catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            window.alert(errorCode + errorMessage) 
+            //var errorCode = error.code;
+            //var errorMessage = error.message;
+            window.alert(error) 
         })
     }
+
 
     return(
         <div className = "main-box-Login">
@@ -58,7 +92,7 @@ function Login ({set_user, set_Page_State}) {
                 <div className = "Login-flex-box">
                     <div><h2 className = "Login-label">Login</h2></div>
                     <input className = "Login-email-input" placeholder = " E-mail" onChange = {email_event} value = {Login_email}></input>
-                    <input type = "password" className = "Login-password-input" placeholder = " Password" onChange = {password_event} value = {Login_password}></input>
+                    <input type = "password" className = "Login-password-input" placeholder = " Password" onChange = {password_event} value = {Login_password} onKeyPress = {Firebase_login_auth_keypress}></input>
                     <div className = "Login-box-label-confirm"><h2 className = "Login-label-confirm" onClick = {Firebase_login_auth}>Confirm login</h2></div>
                 </div>
             </div>
