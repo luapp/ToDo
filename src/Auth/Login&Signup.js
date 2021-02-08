@@ -7,6 +7,7 @@ function Login__Signup ({set_Page_State, set_user, user}) {
 
     const [login__button_style, set_login__button_style] = useState("")
     const [signup__button_style, set_signup__button_style] = useState("")
+    const [auth_state, set_auth_state] = useState(false)
 
     const set_Page_State__login = () => {
         set_Page_State("login_page")
@@ -28,10 +29,11 @@ function Login__Signup ({set_Page_State, set_user, user}) {
         Fire.auth().onAuthStateChanged((user) => {
             if (user) {
                 set_user(user)
+                set_auth_state(true)
             }
         })
         if (user.emailVerified === true) {
-            set_Page_State__user_page()
+            //set_Page_State__user_page()
         }
         if (user.emailVerified === false) {
             Fire.auth().currentUser.sendEmailVerification()
@@ -41,6 +43,15 @@ function Login__Signup ({set_Page_State, set_user, user}) {
             .catch((error) => {
                 //error
             })
+        }
+    }
+    const waiting_auth_jsx = () => {
+        if (auth_state) {
+            return(
+                <div className = "waiting_auth_jsx">
+                    <h2 className = "waiting_auth_jsx_text">Please wait, we are logging you to your account...</h2>
+                </div>
+            )
         }
     }
 
@@ -73,6 +84,7 @@ function Login__Signup ({set_Page_State, set_user, user}) {
                     <button className = "Login__Signup-signup" style = {{backgroundColor: signup__button_style}} onClick = {set_Page_State__signup} onMouseEnter = {mouse_enter_signup__button_style} onMouseLeave = {mouse_leave_signup__button_style}>Signup</button>
                 </div>
             </div>
+            {waiting_auth_jsx()}
         </div>
     )
 }
