@@ -33,7 +33,7 @@ function Login__Signup ({set_Page_State, set_user, user}) {
             }
         })
         if (user.emailVerified === true) {
-            //set_Page_State__user_page()
+            set_Page_State__user_page()
         }
         if (user.emailVerified === false) {
             Fire.auth().currentUser.sendEmailVerification()
