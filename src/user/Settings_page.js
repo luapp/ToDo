@@ -2,6 +2,8 @@ import {useEffect, useState} from "react"
 import "./Settings_page.css"
 import Fire from "../config/Fire"
 import firebase from "firebase"
+import back_white_ico from "../images/back_white.svg"
+import back_black_ico from "../images/back_black.svg"
 
 
 function Settings_page ({set_theme, theme, user}) {
@@ -21,8 +23,7 @@ function Settings_page ({set_theme, theme, user}) {
     const [new_name, set_new_name] = useState("")
     const [new_email, set_new_email] = useState("")
     const [delete_password, set_delete_password] = useState("")
-    const [delete_auth, set_delete_auth] = useState("")
-
+    const [back_icon_style, set_back_icon_style] = useState("")
 
     const browser = () => {
         if (navigator.userAgent.indexOf("Firefox") > -1 === true) {
@@ -93,12 +94,13 @@ function Settings_page ({set_theme, theme, user}) {
         if (theme === "light") {
             set_settings_page_theme_text_display("Switch to dark mode")
             set_settings_change_theme("settings_change_theme_light")
-            set_settings_change_username("settings_change_username_light")
+            set_settings_change_username("settings_change_username_light") //css
             set_settings_change_email("settings_change_email_light")
             set_settings_delete_account("settings_delete_account_light")
             set_settings_signout("settings_signout_light")
             set_settings_title("settings_title_light")
-            set_style("black")
+            set_style("black") // style
+            set_back_icon_style(back_black_ico) //set icon from import
         }
         if (theme === "dark") {
             set_settings_page_theme_text_display("Switch to light mode")
@@ -109,6 +111,7 @@ function Settings_page ({set_theme, theme, user}) {
             set_settings_signout("settings_signout_dark")
             set_settings_title("settings_title_dark")
             set_style("white")
+            set_back_icon_style(back_white_ico)
         }
     }
 
@@ -200,10 +203,6 @@ function Settings_page ({set_theme, theme, user}) {
                         })
                     })
                 })
-                
-                
-                
-                
             })
         }
     }
@@ -234,7 +233,9 @@ function Settings_page ({set_theme, theme, user}) {
             return(
                 <div className = {settings_page_browsersupport}>
 
-                    <div className = "settings_title_box"><h1 className = {settings_title}>Settings</h1></div>
+                    <div className = "settings_title_box">
+                        <h1 className = {settings_title}>Settings</h1>
+                    </div>
                         <div className = "settings_box">
                             <div className = "settings_change_theme_box">
                                 <h3 className = {settings_change_theme} onClick = {toggle_theme}>{settings_page_theme_text_display}</h3>
@@ -258,7 +259,12 @@ function Settings_page ({set_theme, theme, user}) {
         if (settings_panel_value === "change_name") {
             return(
                 <div className = {settings_page_browsersupport}>
-                    <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>Change name</h2></div>
+                    <div className = "settings_title_box">
+                        <div className = "settings_back_icon_box">
+                            <img className = "settings_back_icon" alt = "Back icon"  onClick = {goback} src = {back_icon_style} style = {{width: 25}}></img>
+                        </div>
+                        <h2 className = {settings_title} onClick = {goback}>Change name</h2>
+                    </div>
                         <div className = "settings_box__change_name">
                             <div className = "settings_active_name_box">
                                 <h3 className = "settings_active_name_text" style = {{color:style}}>Active name</h3>
@@ -285,7 +291,12 @@ function Settings_page ({set_theme, theme, user}) {
         if (settings_panel_value === "reset_email") {
             return(
                 <div className = {settings_page_browsersupport}>
-                    <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>Change email</h2></div>
+                    <div className = "settings_title_box">
+                        <div className = "settings_back_icon_box">
+                            <img className = "settings_back_icon" alt = "Back icon"  onClick = {goback} src = {back_icon_style} style = {{width: 25}}></img>
+                        </div>
+                        <h2 className = {settings_title} onClick = {goback}>Change email</h2>
+                    </div>
                         <div className = "settings_box__change_email">
                             <div className = "settings_active_email_box">
                                 <h3 className = "settings_active_email_text" style = {{color:style}}>Active email</h3>
@@ -312,7 +323,12 @@ function Settings_page ({set_theme, theme, user}) {
         if (settings_panel_value === "delete_account") {
             return(
                 <div className = {settings_page_browsersupport}>
-                    <div className = "settings_title_box"><h2 className = {settings_title} onClick = {goback}>DELETE ACCOUNT</h2></div>
+                    <div className = "settings_title_box">
+                        <div className = "settings_back_icon_box">
+                            <img className = "settings_back_icon" alt = "Back icon"  onClick = {goback} src = {back_icon_style} style = {{width: 25}}></img>
+                        </div>
+                        <h2 className = {settings_title} onClick = {goback}>DELETE ACCOUNT</h2>
+                    </div>
                         <div className = "settings_box__delete_account">
                             <div className = "settings_delete_account_condition_box">
                                 <h3 className = "settings_delete_account_condition_text" style = {{color:style}}>You are about to delete your account! All your data will be deleted and you wont be able to recover it.</h3>

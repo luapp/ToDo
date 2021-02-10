@@ -196,6 +196,9 @@
     font-weight: bold;
     height: 90%;
     width: 60%;
+    border: solid;
+    border-color: rgb(60, 60, 60);
+    border-width: 2px;
 }
 
 .settings_old_name_box {
@@ -270,6 +273,9 @@
     font-weight: bold;
     height: 90%;
     width: 60%;
+    border: solid;
+    border-color: rgb(60, 60, 60);
+    border-width: 2px;
 }
 
 .settings_old_email_box {
@@ -361,6 +367,9 @@
     font-weight: bold;
     height: 90%;
     width: 60%;
+    border: solid;
+    border-color: rgb(60, 60, 60);
+    border-width: 2px;
 }
 
 .settings_delete_account_button_box {
@@ -376,4 +385,15 @@
     width: 55%;
     border-radius: 12px;
     font-weight: 600;
+}
+
+.settings_back_icon_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.settings_back_icon {
+    width: 20px;
+    padding-top: 10%;
+    padding-left: 0.3em;
 }
