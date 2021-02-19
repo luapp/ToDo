@@ -401,7 +401,7 @@
 
 
 
-@media screen and (max-height: 650px) {
+@media screen and (max-height: 600px) {
     .settings_change_theme_dark {
         margin-top: 12px;
         margin-bottom: 12px;

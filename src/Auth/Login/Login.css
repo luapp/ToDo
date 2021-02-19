@@ -79,7 +79,7 @@
 
 
 
-@media screen and (max-height: 650px) {
+@media screen and (max-height: 600px) {
     .Login-main-box {
         height: 50vh;
     }
