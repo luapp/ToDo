@@ -16,6 +16,7 @@
 
 .Login-title {
     position: relative;
+    user-select: none;
 }
 
 .Login-main-box {
@@ -35,6 +36,7 @@
 
 .Login-label {
     margin: 0;
+    user-select: none;
 }
 
 .Login-email-input {
@@ -71,4 +73,20 @@
     font-weight: 500;
     font-size: x-large;
     user-select: none;
+}
+
+
+
+
+
+@media screen and (max-height: 650px) {
+    .Login-main-box {
+        height: 50vh;
+    }
+    .Login-email-input {
+        height: 30px;
+    }
+    .Login-password-input {
+        height: 30px;
+    }
 }

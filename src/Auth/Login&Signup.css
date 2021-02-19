@@ -92,3 +92,16 @@
     font-style: italic;
     text-align: center;
 }
+
+
+
+
+
+@media screen and (max-height: 650px) {
+    .Login__Signup-login {
+        border-radius: 15px;
+    }
+    .Login__Signup-signup {
+        border-radius: 15px;
+    }
+}

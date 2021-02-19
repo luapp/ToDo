@@ -33,7 +33,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "react-scripts build && firebase.cmd deploy",
-    "electron": "react-scripts build && electron ."
+    "electron": "react-scripts build && electron .",
+    "electron-only": "electron ."
   },
   "eslintConfig": {
     "extends": [

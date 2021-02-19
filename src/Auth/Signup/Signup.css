@@ -16,6 +16,7 @@
 
 .Signup-title {
     position: relative;
+    user-select: none;
 }
 
 .Signup-main-box {
@@ -35,6 +36,7 @@
 
 .Signup-label {
     margin: 0;
+    user-select: none;
 }
 
 .Signup-email-input {
@@ -80,3 +82,28 @@
     font-size: x-large;
     user-select: none;
 }
+
+
+
+
+
+
+@media screen and (max-height: 650px) {
+    .Signup-main-box {
+        height: 60vh;
+        margin-top: 5vh;
+    }
+    .Signup-name-input {
+        height: 30px;
+    }
+    .Signup-email-input {
+        height: 30px;
+    }
+    .Signup-password-input {
+        height: 30px;
+    }
+    .Signup_goback {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+} 
