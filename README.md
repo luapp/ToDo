@@ -1,6 +1,6 @@
 # To Do WebApp
 
-This project is a Web application that allow the user to have a list of tsks to do. This Web application has been made with React*, Nodejs and Electronjs for desktop version (Windows, MacOS, Linux). Mobile version (iOS, Android) can use PWA by adding the website to home screen and use it just like a native app. 
+This project is a Web application that allow the user to have a list of tasks to do. This Web application has been made with React*, Nodejs and Electronjs for desktop version (Windows, MacOS, Linux). Mobile version (iOS, Android) can use PWA by adding the website to home screen and use it just like a native app. 
 
 ## WebApp URL & QR code:
 
