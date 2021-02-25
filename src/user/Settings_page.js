@@ -4,6 +4,8 @@ import Fire from "../config/Fire"
 import firebase from "firebase"
 import back_white_ico from "../images/back_white.svg"
 import back_black_ico from "../images/back_black.svg"
+import check_black_ico from "../images/check_dark.svg"
+import check_white_ico from "../images/check_white.svg"
 
 
 function Settings_page ({set_theme, theme, user}) {
@@ -158,6 +160,24 @@ function Settings_page ({set_theme, theme, user}) {
             }
         }
     }
+    const new_name_button_submit = () => {
+        if (user.displayName !== new_name) {
+            Fire.auth().currentUser.updateProfile({
+                displayName: new_name
+            })
+            .then(() => {
+                window.alert("Your user name has been changed successfully !")
+                window.location.reload()
+            })
+            .catch((error) => {
+                window.alert("Error...")
+                //error
+            })
+        }
+        else {
+            window.alert("Your new name can't be the same as the old one !")
+        }
+    }
 
     const new_email_input_event = e => {
         set_new_email(e.target.value)
@@ -177,6 +197,21 @@ function Settings_page ({set_theme, theme, user}) {
             else {
                 window.alert("Your new name can't be the same as the old one !")
             }
+        }
+    }
+    const new_email_button_submit = () => {
+        if (user.email !== new_email) {
+            Fire.auth().currentUser.updateEmail(new_email)
+            .then(() => {
+                window.alert("Your account email name has been changed successfully !")
+                window.location.reload()
+            })
+            .catch((error) => {
+                window.alert(error)
+            })
+        }
+        else {
+            window.alert("Your new name can't be the same as the old one !")
         }
     }
 
@@ -278,6 +313,7 @@ function Settings_page ({set_theme, theme, user}) {
                             </div>
                             <div className = "settings_new_name_input_box">
                                 <input className = "settings_new_name_input" placeholder = " Enter a new name" onChange = {new_name_input_event} value = {new_name} onKeyPress = {new_name_input_submit_event}></input>
+                                <img src = {check_black_ico} alt = "Go icon" className = "settings_input_go_ico" onClick = {new_name_button_submit}></img>
                             </div>
                         </div>
                     <div className = "settings_new_old_name_text_box">
@@ -310,6 +346,7 @@ function Settings_page ({set_theme, theme, user}) {
                             </div>
                             <div className = "settings_new_email_input_box">
                                 <input className = "settings_new_email_input" placeholder = " Enter a new email" type = "email" onKeyPress = {new_email_input_submit_event} onChange = {new_email_input_event} value = {new_email}></input>
+                                <img src = {check_black_ico} alt = "Go icon" className = "settings_input_go_ico" onClick = {new_email_button_submit}></img>
                             </div>
                         </div>
                     <div className = "settings_new_old_email_text_box">

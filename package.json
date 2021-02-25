@@ -1,12 +1,12 @@
 {
   "name": "todo",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "private": true,
   "license": "gpl-3.0",
   "author": "Paul Le Gall",
   "description": "This is a WebApp to note what you have to do",
   "homepage": "./",
-  "main": "./src/electron/main.js",
+  "main": "./public/electron.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -34,7 +34,20 @@
     "build": "react-scripts build",
     "deploy": "react-scripts build && firebase.cmd deploy",
     "electron": "react-scripts build && electron .",
-    "electron-only": "electron ."
+    "electron-only": "electron .",
+    "build-windows": "react-scripts build && electron-builder.cmd --win --x64"
+  },
+  "build": {
+    "productName": "To Do",
+    "copyright": "Copyright © 2021 Paul Le Gall",
+    "win": {
+      "icon": "./src/images/512logo.png"
+    },
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
   },
   "eslintConfig": {
     "extends": [

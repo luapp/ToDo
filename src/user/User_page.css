@@ -1,11 +1,20 @@
-.User_page-main-box {
+.User_page-main-box_light {
     position: relative;
     min-height: 100vh;
     min-width: 100vw;
-    background-image: url("../images/background.svg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-image: url("../images/background.svg");
+}
+.User_page-main-box_dark {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/background_dark.png");
 }
 
 .User_page-name-box {

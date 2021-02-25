@@ -276,6 +276,14 @@
     border: solid;
     border-color: rgb(60, 60, 60);
     border-width: 2px;
+    padding: 0;
+}
+
+.settings_input_go_ico {
+    background-color: #21d94c;
+    margin-left: 0.5em;
+    border-radius: 12px;
+    width: 35px;
 }
 
 .settings_old_email_box {

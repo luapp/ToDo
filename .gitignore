@@ -10,6 +10,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -24,8 +25,12 @@ yarn-error.log*
 
 .eslintcache
 
+#firebase
 .firebaserc
 firebase.json
 database.rules.json
 /.firebase
 /src/config
+
+
+/images/Thumbs.db

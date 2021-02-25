@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 35vh;
+    height: 42vh;
     margin-top: 10vh;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .Login-email-input {
-    height: 15%;
+    height: 35px;
     border: none;
     border-radius: 8px;
     font-size: medium;
@@ -48,7 +48,7 @@
 }
 
 .Login-password-input {
-    height: 15%;
+    height: 35px;
     border: none;
     border-radius: 8px;
     font-size: medium;
@@ -72,6 +72,18 @@
     color: black;
     font-weight: 500;
     font-size: x-large;
+    user-select: none;
+}
+
+
+.Login_password_reset_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.Login_password_reset_text {
+    margin: 0;
+    font-weight: lighter;
     user-select: none;
 }
 

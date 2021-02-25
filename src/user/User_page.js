@@ -18,6 +18,8 @@ function User_page ({user, user_name, set_user_name}) {
     const [User_page_add_task_title, set_User_page_add_task_title] = useState("")
     const [task_input_go_button, set_task_input_go_button] = useState("")
     const [task_input, set_task_input] = useState("")
+    const [background_css_state, set_background_css_state] = useState("User_page-main-box_light")
+    const [user_title_theme, set_user_title_theme] = useState("white")
 
     //console.log(user)
     const input_event = e => {
@@ -126,12 +128,12 @@ function User_page ({user, user_name, set_user_name}) {
     const user_name_display = () => {
         if (user_name !== "") {
             return (
-                <h1 className = "User_page-name">{user_name}'s tasks</h1>
+                <h1 className = "User_page-name" style = {{color: user_title_theme}}>{user_name}'s tasks</h1>
             )
         }
         else {
             return (
-                <h2 className = "User_page-name">Loading your data</h2>
+                <h2 className = "User_page-name" style = {{color: user_title_theme}}>Loading your data</h2>
             )
         }
     }
@@ -142,12 +144,16 @@ function User_page ({user, user_name, set_user_name}) {
             set_User_page_add_task_title("User_page-add-task-title_light")
             set_task_input_go_button("task-input-go-button_light")
             set_task_input("task-input_light")
+            set_background_css_state("User_page-main-box_light")
+            set_user_title_theme("black")
         }
         else {
             set_User_page_add_task("User_page-add-task_dark")
             set_User_page_add_task_title("User_page-add-task-title_dark")
             set_task_input_go_button("task-input-go-button_dark")
             set_task_input("task-input_dark")
+            set_background_css_state("User_page-main-box_dark")
+            set_user_title_theme("white")
         }
     }
 
@@ -168,7 +174,7 @@ function User_page ({user, user_name, set_user_name}) {
 
 
     return(
-        <div className = "User_page-main-box">
+        <div className = {background_css_state}>
             <div className = "User_page-name-box">
                 {user_name_display()}
                 <div className = "User_page-settings-box"><img className = {setting_icon_style} onClick = {settings} src = {setting_ico}></img></div>
