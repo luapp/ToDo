@@ -90,13 +90,12 @@ function Login ({set_user, set_Page_State}) {
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                window.alert(errorMessage)
+                window.alert(errorCode)
             })
         })
         .catch((error) => {
             //var errorCode = error.code;
-            //var errorMessage = error.message;
-            window.alert(error) 
+            //var errorMessage = error.message; 
         })
     }
 

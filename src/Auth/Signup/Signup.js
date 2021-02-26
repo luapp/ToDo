@@ -36,14 +36,16 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
                         verified: false
                     }, (error) => {
                         if (error) {
-                            console.log(error)
+                            const errorcode = error.code
+                            window.alert(errorcode)
                         }
                         else {
                             Fire.database().ref("Users_data/" + user.user.uid + "/settings").set({
                                 theme: "light"
                             }, (error) => {
                                 if (error) {
-                                    console.log(error)
+                                    const errorcode = error.code
+                                    window.alert(errorcode)
                                 }
                                 else {
                                     set_user(user.user)
@@ -52,7 +54,8 @@ function Signup ({set_user, set_Page_State, user_name, set_user_name}) {
                                         set_Page_State("verify")
                                     })
                                     .catch((error) => {
-                                        console.log(error)
+                                        const errorcode = error.code
+                                        window.alert(errorcode)
                                     })
                                 }
                             })

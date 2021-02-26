@@ -142,7 +142,7 @@ function Settings_page ({set_theme, theme, user}) {
     }
     const new_name_input_submit_event = e => {
         if (e.key === "Enter") {
-            if (user.displayName !== new_name) {
+            if (user.displayName !== new_name && new_name !== "") {
                 Fire.auth().currentUser.updateProfile({
                     displayName: new_name
                 })
@@ -151,17 +151,19 @@ function Settings_page ({set_theme, theme, user}) {
                     window.location.reload()
                 })
                 .catch((error) => {
-                    window.alert("Error...")
+                    const errorcode = error.code
+                    window.alert(errorcode)
+                    window.location.reload()
                     //error
                 })
             }
             else {
-                window.alert("Your new name can't be the same as the old one !")
+                window.alert("Your new name can't be the same as the old one, or the new name is invalid !")
             }
         }
     }
     const new_name_button_submit = () => {
-        if (user.displayName !== new_name) {
+        if (user.displayName !== new_name && new_name !== "") {
             Fire.auth().currentUser.updateProfile({
                 displayName: new_name
             })
@@ -170,12 +172,14 @@ function Settings_page ({set_theme, theme, user}) {
                 window.location.reload()
             })
             .catch((error) => {
-                window.alert("Error...")
+                const errorcode = error.code
+                window.alert(errorcode)
+                window.location.reload()
                 //error
             })
         }
         else {
-            window.alert("Your new name can't be the same as the old one !")
+            window.alert("Your new name can't be the same as the old one, or the new name is invalid !")
         }
     }
 
@@ -191,7 +195,9 @@ function Settings_page ({set_theme, theme, user}) {
                     window.location.reload()
                 })
                 .catch((error) => {
-                    window.alert(error)
+                    const errorcode = error.code
+                    window.alert(errorcode)
+                    window.location.reload()
                 })
             }
             else {
@@ -207,7 +213,9 @@ function Settings_page ({set_theme, theme, user}) {
                 window.location.reload()
             })
             .catch((error) => {
-                window.alert(error)
+                const errorcode = error.code
+                window.alert(errorcode)
+                window.location.reload()
             })
         }
         else {
@@ -233,11 +241,21 @@ function Settings_page ({set_theme, theme, user}) {
                                         window.alert("Your account has been deleted !")
                                         window.location.reload()
                                     })
+                                    .catch((error) => {
+                                        const errorcode = error.code
+                                        window.alert(errorcode)
+                                        window.location.reload()
+                                    })
                                 })
                             })
                         })
                     })
                 })
+            })
+            .catch((error) => {
+                const errorcode = error.code
+                window.alert(errorcode)
+                window.location.reload()
             })
         }
     }
@@ -255,11 +273,21 @@ function Settings_page ({set_theme, theme, user}) {
                                     window.alert("Your account has been deleted !")
                                     window.location.reload()
                                 })
+                                .catch((error) => {
+                                    const errorcode = error.code
+                                    window.alert(errorcode)
+                                    window.location.reload()
+                                })
                             })
                         })
                     })
                 })
             })      
+        })
+        .catch((error) => {
+            const errorcode = error.code
+            window.alert(errorcode)
+            window.location.reload()
         })
     }
 
