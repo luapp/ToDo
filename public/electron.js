@@ -13,16 +13,14 @@ function createWindow () {
       frame: true,
       maximizable: true,
       alwaysOnTop: false,
-      icon: "./src/images/192logo.png",
+      icon: "./src/images/256logo.png",
       webPreferences: {
         nodeIntegration: true
       }
     })
     main_window.loadFile("./build/index.html")
 }
-const Tray_app = () => {
-    new Tray("./src/images/192logo.png")
-}
+
 
 app.whenReady().then(() => {
   //new Tray("./192logo.png")

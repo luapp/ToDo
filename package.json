@@ -41,7 +41,7 @@
     "productName": "To Do",
     "copyright": "Copyright © 2021 Paul Le Gall",
     "win": {
-      "icon": "./src/images/512logo.png"
+      "icon": "./src/images/256logo.png"
     },
     "publish": [
       {
