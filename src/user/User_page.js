@@ -181,7 +181,7 @@ function User_page ({user, user_name, set_user_name}) {
             </div>
             {setting_panel()}
             <div className = "User_page-tasks-main-box" onClick = {settings_false}>
-                <div className = "User_page-task-list-box">
+                <div className = "User_page-task-list-box" onClick = {input_toggole}>
                     <div className = {User_page_add_task}>
                         <div className = "User_page-add-task-title-flex">
                             <h2 className = {User_page_add_task_title} onClick = {input_toggole}>+ Add a task</h2>

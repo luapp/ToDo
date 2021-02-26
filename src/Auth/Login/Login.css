@@ -87,6 +87,11 @@
     user-select: none;
 }
 
+.Login-label-confirm {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+}
 
 
 

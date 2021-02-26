@@ -40,19 +40,21 @@
 }
 
 .Signup-email-input {
-    height: 10%;
+    height: 35px;
     border: none;
     border-radius: 8px;
     font-size: medium;
     font-weight: bold;
+    padding: 0;
 }
 
 .Signup-password-input {
-    height: 10%;
+    height: 35px;
     border: none;
     border-radius: 8px;
     font-size: medium;
     font-weight: bold;
+    padding: 0;
 }
 
 .Signup-box-label-confirm {
@@ -63,11 +65,12 @@
 }
 
 .Signup-name-input {
-    height: 10%;
+    height: 35px;
     border: none;
     border-radius: 8px;
     font-size: medium;
     font-weight: bold;
+    padding: 0;
 }
 
 .Signup_goback_box {
@@ -83,12 +86,19 @@
     user-select: none;
 }
 
+.Signup-label-confirm {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    border-color: black;
+    border-width: thin;
+}
 
 
 
 
 
-@media screen and (max-height: 650px) {
+@media screen and (max-height: 620px) {
     .Signup-main-box {
         height: 60vh;
         margin-top: 5vh;
