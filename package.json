@@ -44,7 +44,7 @@
     "appId": "com.paullegall.todo",
     "mac": {
       "target": "dmg",
-      "icon": "./src/images/256logo.png"
+      "icon": "./src/images/512logo.png"
     },
     "win": {
       "icon": "./src/images/256logo.png"
